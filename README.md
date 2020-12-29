@@ -97,8 +97,19 @@ Selanjutnya pada setiap UML dilakukan ```service networking restart```.
 
 ### C. Routing
 
+Pada UML SURABAYA, KEDIRI, dan BATU ditambahkan proses routing sesuai dengan metode yang digunakan yaitu metode VLSM. Sehingga ditambahkan isi ```route.sh``` sebagai berikut :
+
+#### SURABAYA
+
+#### KEDIRI
+
+#### BATU
+
+kemudian agar bisa berjalan, lakukan ```iptables –t nat –A POSTROUTING –o eth0 –j MASQUERADE –s 192.168.0.0/16``` terlebih dahulu pada 3 UML diatas, selanjutnya lakukan ```source route.sh``` untuk menjalankan ```route.sh```. Untuk melihat apakah routing sudah benar, dapat dilihat dengan ```route -n```.
+
 ### D. DHCP Server-Relay
 
+Pertama, install dhcp server pada MOJOKERTO dengan cara ```apt-get install isc-dhcp-server```
 
 ### 1. SURABAYA bisa akses keluar tanpa MASQUERADE
 
