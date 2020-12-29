@@ -56,3 +56,47 @@ semua aturan iptables harus disimpan pada sistem atau paling tidak kalian menyed
 backup.
 
 # JAWABAN
+
+### A. Membuat topologi
+
+Pada ```topologi5.sh``` diisi sesuai gambar topologi sebagai berikut :
+
+(foto isi topologi5.sh)
+
+lalu kemudian di ```bash topologi5.sh``` untuk menjalankan.
+
+### B. Subnetting VLSM
+
+Selanjutnya melakukan subnetting dengan menggunakan metode VLSM. Didapat hasilnya sebagai berikut :
+
+![vlsm](https://user-images.githubusercontent.com/62512432/103282874-a5196c80-4a09-11eb-87f0-31fa38d4c24d.png)
+
+lalu didapatkan IP untuk masing-masing subnet (subnet Malang-Mojokerto-Batu tidak perlu diikutkan dalam pembagian IP karena mereka langsung mendapatkan IP DMZ)
+
+![ip](https://user-images.githubusercontent.com/62512432/103282937-d4c87480-4a09-11eb-9430-a9a19f591d94.png)
+
+setelah didapatkan IP masing-masing subnet, dilakukan konfigurasi pada setiap UML. Pertama pada SURABAYA, KEDIRI, dan BATU dilakukan uncomment pada perintah ```net.ipv4.ip_forward=1``` agar dapat meneruskan route nantinya. Hal ini dilakukan dengan cara mengetikkan ```nano /etc/sysctl.conf``` kemudian edit di situ, dan untuk mengaktifkan perubahan baru, mengetikkan ```sysctl -p```.
+
+Selanjutnya, pada ```nano /etc/network/interfaces``` ditambahkan connfig seperti dibawah ini :
+
+#### SURABAYA (Router)
+
+#### KEDIRI (Router & DHCP Relay)
+
+#### BATU (Router & DHCP Relay)
+
+#### PROBOLINGGO (Web Server)
+
+#### MADIUN (Web Server)
+
+#### MALANG (DNS Server)
+
+#### MOJOKERTO (DHCP Server)
+
+Selanjutnya pada setiap UML dilakukan ```service networking restart```.
+
+### C. Routing
+
+### D. DHCP Server-Relay
+
+
