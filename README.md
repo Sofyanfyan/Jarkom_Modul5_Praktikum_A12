@@ -100,3 +100,16 @@ Selanjutnya pada setiap UML dilakukan ```service networking restart```.
 ### D. DHCP Server-Relay
 
 
+### 1. SURABAYA bisa akses keluar tanpa MASQUERADE
+
+### 2. Akses SSH di luar topologi (UML) akan di-DROP ketika mengakses server yang memiliki IP DMZ (lakukan setting di SURABAYA)
+
+### 3. DHCP Server dan DNS Server maksimal menerima 3 koneksi ICMP secara bersamaan, selebihnya di-DROP (disetting pada masing-masing server)
+
+### 4. Akses dari subnet SIDOARJO hanya diperbolehkan pada pukul 07.00 - 17.00 pada hari Senin sampai Jumat
+
+### 5.  Akses dari subnet GRESIK hanya diperbolehkan pada pukul 17.00 hingga pukul 07.00 setiap harinya
+
+### 6. Ketika mengakses DNS Server akan secara bergantian didistribusikan ke PROBOLINGGO dan MADIUN pada port 80 (setting iptables di SURABAYA)
+
+### 7. Logging semua paket yang di-DROP
