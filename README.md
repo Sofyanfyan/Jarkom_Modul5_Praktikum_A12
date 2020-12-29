@@ -168,11 +168,29 @@ Kemudian untuk testing, dilakukan pada Putty dengan mengetikkan ```nc [IP] 22```
 
 ### 3. DHCP Server dan DNS Server maksimal menerima 3 koneksi ICMP secara bersamaan, selebihnya di-DROP (disetting pada masing-masing server)
 
+Pada MALANG dan MOJOKERTO, dibuat file dengan nama ```three.sh``` yang berisi iptables yang diminta :
 
+![3mlg](https://user-images.githubusercontent.com/62512432/103289110-faa94580-4a18-11eb-83af-c77a405130dc.png)
+
+![3mojo](https://user-images.githubusercontent.com/62512432/103289128-05fc7100-4a19-11eb-8874-941eea3a7450.png)
+
+lalu dicoba dengan ping IP MOJOKERTO di UML selain MALANG dan MOJOKERTO.
 
 ### 4. Akses dari subnet SIDOARJO hanya diperbolehkan pada pukul 07.00 - 17.00 pada hari Senin sampai Jumat
 
+Pada MALANG, dibuat file dengan nama ```four.sh``` yang berisi iptables yang diminta :
+
+![4mlg](https://user-images.githubusercontent.com/62512432/103289390-a3f03b80-4a19-11eb-99da-c3106795dc1e.png)
+
+kemudian untuk testing dapat dilakukan dengan cara menjalankan perintah iptables di UML MALANG dan routing di UML SIDOARJO. Apabila dilakukan diluar jam yang ditetapkan, maka routing tidak berhasil. Sebaliknya apabila dilakukan pada jam yang ditentukan, maka routing akan berhasil.
+
 ### 5.  Akses dari subnet GRESIK hanya diperbolehkan pada pukul 17.00 hingga pukul 07.00 setiap harinya
+
+Pada MALANG, dibuat file dengan nama ```five.sh``` yang berisi iptables yang diminta :
+
+![5mlg](https://user-images.githubusercontent.com/62512432/103289528-06e1d280-4a1a-11eb-9440-ce88dd67d960.png)
+
+testing dapat dilakukan dengan cara yang sama seperti pada MALANG dan SIDOARJO.
 
 ### 6. Ketika mengakses DNS Server akan secara bergantian didistribusikan ke PROBOLINGGO dan MADIUN pada port 80 (setting iptables di SURABAYA)
 
