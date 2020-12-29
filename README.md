@@ -129,13 +129,46 @@ kemudian agar bisa berjalan, lakukan ```iptables –t nat –A POSTROUTING –o 
 
 ### D. DHCP Server-Relay
 
-Pertama, install dhcp server pada MOJOKERTO dengan cara ```apt-get install isc-dhcp-server```
+Selanjutnya, memberikan IP pada subnet GRESIK dan SIDOARJO. Pertama, install dhcp server pada MOJOKERTO dengan cara ```apt-get install isc-dhcp-server```, kemudian lakukan konfigurasi pada ```nano /etc/dhcp/dhcpd.conf``` seperti dibawah ini :
+
+![dhcpsrvr](https://user-images.githubusercontent.com/62512432/103286802-a780c400-4a13-11eb-8fa1-6db10c182648.png)
+
+dan pada ```nano /etc/default/isc-dhcp-server``` ditambahkan ```eth0``` pada ```INTERFACES```
+
+![dhcpsrvr2](https://user-images.githubusercontent.com/62512432/103287254-a2704480-4a14-11eb-8272-4123846c5a96.png)
+
+lalu direstart dengan perintah ```service isc-dhcp-server restart```.
+
+Kedua, pada KEDIRI install dhcp relay dengan cara ```apt-get install isc-dhcp-relay```, kemudian lakukan konfigurasi pada ```nano //etc/default/isc-dhcp-relay``` seperti dibawah ini :
+
+![dhcpkdr](https://user-images.githubusercontent.com/62512432/103288048-984f4580-4a16-11eb-9735-b42c7a95e6d9.png)
+
+sama dengan BATU, lakukan seperti di KEDIRI
+
+![dhcpbt](https://user-images.githubusercontent.com/62512432/103288216-fed46380-4a16-11eb-8a08-602dda78cafe.png)
+
+Lalu DHCP dinyatakan berhasil apabila IP pad GRESIK dan SIDOARJO dapat terlihat di ```ifconfig```.
+
 
 ### 1. SURABAYA bisa akses keluar tanpa MASQUERADE
 
+Pada UML SURABAYA, dibuat file dengan nama ```one.sh``` yang berisi iptables yang diminta sesuai dengan soal, yaitu :
+
+![iptblsby](https://user-images.githubusercontent.com/62512432/103288457-7d310580-4a17-11eb-8a69-3de6117e6439.png)
+
+untunk testing dapat dilakukan ```ping google.com``` pada setiap UML.
+
 ### 2. Akses SSH di luar topologi (UML) akan di-DROP ketika mengakses server yang memiliki IP DMZ (lakukan setting di SURABAYA)
 
+Pada UML SURABAYA, dibuat file dengan nama ```two.sh``` yang berisi iptables yang diminta :
+
+![2sby](https://user-images.githubusercontent.com/62512432/103288724-21b34780-4a18-11eb-81b1-8f3be25d5c09.png)
+
+Kemudian untuk testing, dilakukan pada Putty dengan mengetikkan ```nc [IP] 22```.
+
 ### 3. DHCP Server dan DNS Server maksimal menerima 3 koneksi ICMP secara bersamaan, selebihnya di-DROP (disetting pada masing-masing server)
+
+
 
 ### 4. Akses dari subnet SIDOARJO hanya diperbolehkan pada pukul 07.00 - 17.00 pada hari Senin sampai Jumat
 
