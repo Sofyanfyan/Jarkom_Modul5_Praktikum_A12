@@ -61,7 +61,7 @@ backup.
 
 Pada ```topologi5.sh``` diisi sesuai gambar topologi sebagai berikut :
 
-(foto isi topologi5.sh)
+![isitopo](https://user-images.githubusercontent.com/62512432/103284578-2d017580-4a0e-11eb-9676-6267e18392a6.png)
 
 lalu kemudian di ```bash topologi5.sh``` untuk menjalankan.
 
@@ -81,17 +81,31 @@ Selanjutnya, pada ```nano /etc/network/interfaces``` ditambahkan connfig seperti
 
 #### SURABAYA (Router)
 
+![sby](https://user-images.githubusercontent.com/62512432/103284805-d8aac580-4a0e-11eb-8481-b3c98bd8f71b.png)
+
 #### KEDIRI (Router & DHCP Relay)
+
+![kdr](https://user-images.githubusercontent.com/62512432/103284845-f841ee00-4a0e-11eb-9144-7ffcff999168.png)
 
 #### BATU (Router & DHCP Relay)
 
+![bt](https://user-images.githubusercontent.com/62512432/103284881-10b20880-4a0f-11eb-914a-b54f43d2a584.png)
+
 #### PROBOLINGGO (Web Server)
+
+![prblgg](https://user-images.githubusercontent.com/62512432/103284924-33442180-4a0f-11eb-9ecc-792fb223f685.png)
 
 #### MADIUN (Web Server)
 
+![mdun](https://user-images.githubusercontent.com/62512432/103284945-45be5b00-4a0f-11eb-8f3c-62539e76bc67.png)
+
 #### MALANG (DNS Server)
 
+![mlg](https://user-images.githubusercontent.com/62512432/103285033-8cac5080-4a0f-11eb-8db5-9e2202ace9c4.png)
+
 #### MOJOKERTO (DHCP Server)
+
+![mojo](https://user-images.githubusercontent.com/62512432/103285003-7a321700-4a0f-11eb-8f80-670d33136be5.png)
 
 Selanjutnya pada setiap UML dilakukan ```service networking restart```.
 
@@ -101,9 +115,15 @@ Pada UML SURABAYA, KEDIRI, dan BATU ditambahkan proses routing sesuai dengan met
 
 #### SURABAYA
 
+![rutsby](https://user-images.githubusercontent.com/62512432/103285115-ced59200-4a0f-11eb-8557-4acacd38c517.png)
+
 #### KEDIRI
 
+![rutkdr](https://user-images.githubusercontent.com/62512432/103285407-a732f980-4a10-11eb-86a0-1c8c13100e45.png)
+
 #### BATU
+
+![rutbt](https://user-images.githubusercontent.com/62512432/103285135-d8f79080-4a0f-11eb-933b-17348fd592f3.png)
 
 kemudian agar bisa berjalan, lakukan ```iptables –t nat –A POSTROUTING –o eth0 –j MASQUERADE –s 192.168.0.0/16``` terlebih dahulu pada 3 UML diatas, selanjutnya lakukan ```source route.sh``` untuk menjalankan ```route.sh```. Untuk melihat apakah routing sudah benar, dapat dilihat dengan ```route -n```.
 
